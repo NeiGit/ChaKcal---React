@@ -24,7 +24,7 @@ async function handleSimpleRequest (foodLabel) {
                         else {
                             console.log(data.parsed[0].food)
                             console.log(data.parsed[0].food.nutrients)
-                            return data.parsed[0].food
+                            return data.parsed[0] !== undefined ? data.parsed[0].food : undefined
                         }
                     })
                 }
@@ -35,7 +35,7 @@ async function handleSimpleRequest2(foodLabel){
     // GET request using fetch with async/await
     const response = await fetch(URLmanager.simpleFoodRequestUrl(foodLabel));
     const data = await response.json();
-    return data.parsed[0].food
+    return data.parsed[0] !== undefined ? data.parsed[0].food : undefined
 }
 
 export default {
