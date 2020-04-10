@@ -5,21 +5,20 @@ import DataTable from './components/DataTable.jsx'
 
 class App extends Component {
     state = { 
-      foodCharts : []
+      nutritionCharts : []
     }
-    handleSearch = (foodInfo) => {
-      const {foodCharts} = this.state
-      console.log("App.js received: ", foodInfo.nutrients)
+    
+    handleSearch = (nutritionChart) => {
       this.setState({
-        foodCharts : [...foodCharts, foodInfo]
+        nutritionCharts: [...this.state.nutritionCharts, nutritionChart]
       })
-      console.log('A foodChart was pushed to foodCharts, now with a length of ', foodCharts.length)
     }
+    
     render() {
       return (
         <div>
           <Search handleSearch = {this.handleSearch}/>
-          {this.state.foodCharts.length !== 0 && <DataTable foodCharts = {this.state.foodCharts}/>}
+          {this.state.nutritionCharts.length > 0 && <DataTable nutritionCharts = {this.state.nutritionCharts}/>}
         </div>
       );
     }
